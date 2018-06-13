@@ -1,0 +1,60 @@
+div.App {
+    margin: auto;
+}
+
+div.recordTableContainer {
+    margin: auto;
+    width: 500px;
+}
+
+div.recordContainer {
+    margin: 10px;
+    padding: 10px;
+    width: 200px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: darkblue;
+    background-color: aliceblue;
+}
+
+div.inputFormsContainer {
+    margin: auto;
+    width: 500px;
+}
+
+div.inputContainer {
+    margin: 10px;
+}
+
+div.menuBarContainer {
+    height: 50px;
+    background-color: honeydew;
+}
+
+div.tabButtonContainer {
+    margin: auto;
+    text-align: center;
+}
+
+span.title {
+    font-weight: bold;
+}
+
+span.errorMessage {
+    margin-left: 5px;
+    color: red;
+}
+
+button.active {
+    color: red;
+    font-weight: bold;
+    margin: 10px;
+    border-radius: 3px;
+}
+
+button.notActive {
+    color: black;
+    margin: 10px;
+    border-radius: 3px;
+}
