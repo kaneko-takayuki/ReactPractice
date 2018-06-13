@@ -1,32 +1,6 @@
 import createClass from 'create-react-class';
 import React from 'react';
 
-// クラス内に関数を置くと、`this::this.changeName`みたいな指定方法になって、
-// thisが2回続くことに違和感があったから、外に出してみた。
-
-// 「名前」を変更する
-function changeName(event) {
-  this.setState({name: event.target.value});
-}
-
-// 「年齢」を変更する
-function changeAge(event) {
-  this.setState({age: event.target.value});
-}
-
-// 「趣味」を変更する
-function changeHobby(event) {
-  this.setState({hobby: event.target.value});
-}
-
-// 「登録」ボタンが押下された
-function submit() {
-  console.log(`名前: ${this.state.name}`);
-  console.log(`年齢: ${this.state.age}`);
-  console.log(`趣味: ${this.state.hobby}`);
-  console.log('------------')
-}
-
 const InputForms = createClass({
   // 初期状態をセットする
   getInitialState() {
@@ -35,6 +9,29 @@ const InputForms = createClass({
       age: '',
       hobby: '音楽',
     };
+  },
+
+  // 「名前」を変更する
+  changeName(event) {
+    this.setState({name: event.target.value});
+  },
+
+  // 「年齢」を変更する
+  changeAge(event) {
+    this.setState({age: event.target.value});
+  },
+
+  // 「趣味」を変更する
+  changeHobby(event) {
+    this.setState({hobby: event.target.value});
+  },
+
+  // 「登録」ボタンが押下された
+  submit() {
+    console.log(`名前: ${this.state.name}`);
+    console.log(`年齢: ${this.state.age}`);
+    console.log(`趣味: ${this.state.hobby}`);
+    console.log('------------')
   },
 
   render: function() {
@@ -52,7 +49,7 @@ const InputForms = createClass({
             type="text"
             placeholder="名前を入力してください"
             value={this.state.name}
-            onChange={this::changeName}
+            onChange={this::this.changeName}
           />
         </div>
 
@@ -63,7 +60,7 @@ const InputForms = createClass({
             type="text"
             placeholder="年齢を入力してください"
             value={this.state.age}
-            onChange={this::changeAge}
+            onChange={this::this.changeAge}
           />
           {
             // 数値以外のものが入力された時のみエラーメッセージを出力
@@ -78,7 +75,7 @@ const InputForms = createClass({
           <span className="title">趣味: </span>
           <select
             value={this.state.hobby}
-            onChange={this::changeHobby}
+            onChange={this::this.changeHobby}
           >
             <option value="音楽">音楽</option>
             <option value="映画">映画</option>
@@ -89,7 +86,7 @@ const InputForms = createClass({
         {/* 登録ボタン(「名前」と「年齢」が正しく入力された時のみ有効) */}
         <div className="inputContainer">
           <button
-            onClick={this::submit}
+            onClick={this::this.submit}
             disabled={!(nameEntered && ageEntered && ageValid)}
           >
             登録

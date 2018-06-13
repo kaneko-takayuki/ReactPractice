@@ -22,10 +22,6 @@ const tabs = I.List([
   new Tab(1, '一覧' ),
 ]);
 
-// 選択状態の切り替え
-function changeTabIndex(index) {
-  this.setState({selectedTabIndex: index});
-}
 
 class App extends Component {
   constructor(props) {
@@ -35,13 +31,18 @@ class App extends Component {
     };
   }
 
+  // 選択状態の切り替え
+  changeTabIndex(index) {
+    this.setState({selectedTabIndex: index});
+  }
+
   render() {
     return (
       <div className="App">
         {/* メニューバー */}
         <div>
           <MenuBar
-            onTabChange={this::changeTabIndex}
+            onTabChange={this::this.changeTabIndex}
             selectedTabIndex={this.state.selectedTabIndex}
             tabs={tabs}
           />
