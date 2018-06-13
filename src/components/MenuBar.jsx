@@ -30,5 +30,5 @@ export default class MenuBar extends Component {
 MenuBar.propTypes = {
   onTabChange: PropTypes.func.isRequired,
   selectedTabIndex: PropTypes.number.isRequired,
-  tabs: PropTypes.array.isRequired,
+  tabs: PropTypes.object.isRequired,
 };

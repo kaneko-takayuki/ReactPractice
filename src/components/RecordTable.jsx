@@ -17,5 +17,5 @@ export default class RecordTable extends Component {
 }
 
 RecordTable.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.object.isRequired
 };

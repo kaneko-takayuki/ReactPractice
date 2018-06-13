@@ -1,16 +1,26 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import './css/App.css';
+import * as I from 'immutable';
 
+import './css/App.css';
+import Person from './model/Person';
+import Tab from './model/Tab';
 import RecordTable from './components/RecordTable';
 import InputForms from './components/InputForms';
 import MenuBar from './components/MenuBar';
 
-const dummyData = [
-  { name: 'taro', age: 20, skills: ['Basket Ball', 'Math'] },
-  { name: 'jiro', age: 18, skills: ['Japanese', 'Tennis', 'Music'] },
-  { name: 'saburo', age: 15, skills: ['English', 'Baseball'] }
-];
+// 「一覧」画面に表示させる人データ
+const persons = I.List([
+  new Person('taro', 20, ['Basket Ball', 'Math']),
+  new Person('jiro', 18, ['Japanese', 'Tennis', 'Music']),
+  new Person( 'saburo', 15, ['English', 'Baseball'])
+]);
+
+// タブ一覧
+const tabs = I.List([
+  new Tab(0, '追加フォーム'),
+  new Tab(1, '一覧' ),
+]);
 
 // 選択状態の切り替え
 function changeTabIndex(index) {
@@ -33,10 +43,7 @@ class App extends Component {
           <MenuBar
             onTabChange={this::changeTabIndex}
             selectedTabIndex={this.state.selectedTabIndex}
-            tabs={[
-              { index: 0, name: '追加フォーム' },
-              { index: 1, name: '一覧' },
-            ]}
+            tabs={tabs}
           />
         </div>
 
@@ -45,7 +52,7 @@ class App extends Component {
           {
             (this.state.selectedTabIndex === 0) ?
               <InputForms />
-              : <RecordTable data={dummyData} />
+              : <RecordTable data={persons} />
           }
         </div>
       </div>
