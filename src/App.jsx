@@ -29,6 +29,9 @@ class App extends Component {
     this.state = {
       selectedTabIndex: props.selectedTabIndex,
     };
+
+    // thisでバインド
+    this.changeTabIndex = this::this.changeTabIndex;
   }
 
   // 選択状態の切り替え
